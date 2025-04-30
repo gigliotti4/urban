@@ -28,6 +28,10 @@
                 <li class="nav-item">
                     <a class="nav-link nav__menu__inicio {{ request()->routeIs('contacto') ? 'active__header' : '' }}" href="{{ route('contacto') }}">Contacto</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link nav__menu__inicio " href="{{ route('contacto') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+   
             </ul>
         </div>
     </div>
@@ -38,7 +42,8 @@
         <a class="navbar-brand" href="{{ route('index') }}">
             <img src="{{ asset(Storage::url($logo->logo_header)) }}" class="">
         </a>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <a class="nav-link nav__menu__inicio " href="{{ route('contacto') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+        <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">

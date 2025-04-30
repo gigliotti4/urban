@@ -96,6 +96,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/edit/{id}', [App\Http\Controllers\admin\NovedadesController::class, 'edit'])->name('edit');
             Route::put('/update/{id}', [App\Http\Controllers\admin\NovedadesController::class, 'update'])->name('update');
             Route::delete('destroy/{id}', [App\Http\Controllers\admin\NovedadesController::class, 'destroy'])->name('destroy');
+            Route::delete('eliminar-imagen/{id}/{key}', [App\Http\Controllers\admin\NovedadesController::class, 'eliminarImagen'])->name('admin.novedades.eliminarImagen');
         });
 
         //  ingenieria routes

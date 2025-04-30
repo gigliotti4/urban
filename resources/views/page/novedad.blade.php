@@ -41,25 +41,42 @@
 <div class="container my-5" style="padding-bottom: 150px">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <img src="{{ asset(Storage::url($novedad->imagen)) }}" class="w-100" style="height: 400px">
+            @php
+                // Decodificar la galería de forma segura
+                $galeria_items = $novedad->galeria ? json_decode($novedad->galeria) : [];
+            @endphp
+
+            {{-- Verificar si hay imágenes en la galería --}}
+            @if(is_array($galeria_items) && count($galeria_items) > 0)
+                {{-- IMPLEMENTACIÓN FOTORAMA --}}
+                <div class="fotorama"
+                     {{-- data-nav="thumbs" --}}
+                     data-allowfullscreen="true"
+                     data-autoplay="true"
+                     data-transition="crossfade"
+                     data-width="100%"
+                     data-height="500"
+                     data-ratio="16/9"
+                     data-fit="cover">
+
+                    {{-- Imágenes de la galería --}}
+                    @foreach($galeria_items as $imagen)
+                        <img src="{{ asset(Storage::url($imagen)) }}" class="w-100">
+                    @endforeach
+                </div>
+            @elseif($novedad->imagen)
+                {{-- Mostrar imagen principal si no hay galería --}}
+                <img src="{{ asset(Storage::url($novedad->imagen)) }}" class="img-fluid" alt="{{ $novedad->titulo }}" style="width: 100%; height: 500px; object-fit: cover;">
+            @else
+                {{-- Mensaje si no hay ni galería ni imagen principal --}}
+                 <p class="text-center">No hay imágenes disponibles.</p>
+            @endif
         </div>
         <div class="col-md-6">
-
-           
             <h3 class="titulo-empresa">{{ $novedad->titulo }}</h3>
             <span class="descripcion-empresa">{!! $novedad->descripcion !!}</span>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 @endsection

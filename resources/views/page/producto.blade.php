@@ -111,7 +111,7 @@ color: white;
             $galeria = json_decode($galeria, true) ?? [];
         }
       @endphp
-      
+
       @if(is_array($galeria) && count($galeria) > 0)
         <div class="row mt-4">
           @foreach($galeria as $imagen)
@@ -123,11 +123,23 @@ color: white;
           @endforeach
         </div>
       @else
-        <div class="row">
+        {{-- Mostrar imagen principal si no hay galería pero sí imagen principal --}}
+        @if($producto->imagen)
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-6 col-sm-8 mb-4">
+              <div class="imagen-producto-container">
+                <img src="{{ asset(Storage::url($producto->imagen)) }}" alt="{{ $producto->nombre }}" class="img-fluid imagen-producto" data-bs-toggle="modal" data-bs-target="#imagenModal" data-imagen="{{ asset(Storage::url($producto->imagen)) }}">
+              </div>
+            </div>
+        </div>
+        @else
+        {{-- Mostrar mensaje si no hay ni galería ni imagen principal --}}
+        <div class="row mt-4">
           <div class="col-12">
             <p class="text-center">No hay imágenes disponibles</p>
           </div>
         </div>
+        @endif
       @endif
     </div>
 </div>

@@ -71,6 +71,10 @@
     </div>
     <p class="step-description">{!!$proceso->descripcion!!}</p>
     @endforeach
+    <div class="text-center mt-5">
+
+        <a type="button" href="{{ route('contacto') }}" class="btn btn__black mb-2">Contáctanos ahora</a>
+    </div>
 </div>
 
 {{-- productos --}}

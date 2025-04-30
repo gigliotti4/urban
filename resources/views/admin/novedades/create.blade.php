@@ -24,10 +24,15 @@
     </div>
 
     <div class="row">
-   
         <div class="form-group col-md-6 my-4">
             <label for="imagen">Imagen 900x675px</label> <br>
             <input type="file" class="form-control-file" required id="imagen" name="imagen">
+        </div>
+        
+        <div class="form-group col-md-6 my-4">
+            <label for="galeria">Galería de imágenes</label> <br>
+            <input type="file" class="form-control-file" multiple id="galeria" name="galeria[]">
+            <small class="form-text text-muted">Puede seleccionar múltiples imágenes para la galería.</small>
         </div>
     </div>
 

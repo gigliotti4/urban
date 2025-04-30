@@ -9,7 +9,11 @@ class Novedades extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['orden', 'titulo', 'descripcion', 'imagen', 'descripcion_corto'];
+    protected $fillable = ['orden', 'titulo', 'descripcion', 'imagen', 'descripcion_corto', 'galeria'];
+
+    protected $casts = [
+        'galeria' => 'array',
+    ];
 
    
 }

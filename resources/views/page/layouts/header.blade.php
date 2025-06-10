@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-transparent fixed-top" id="mainHeader">
     <div class="container">
         <a class="navbar-brand" href="{{ route('index') }}">
-            <img src="{{ asset(Storage::url($logo->logo_header)) }}" class="">
+            <img src="{{ asset(Storage::url($logo->logo_header)) }}" style="height:100px">
         </a>
         <button class="navbar-toggler bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link nav__menu__inicio {{ request()->routeIs('servicios') ? 'active__header' : '' }}" href="{{ route('servicios') }}">Servicios</a>
+                    <a class="nav-link nav__menu__inicio {{ request()->routeIs('empresa') ? 'active__header' : '' }}" href="{{ route('empresa') }}">Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav__menu__inicio {{ request()->routeIs('empresa') ? 'active__header' : '' }}" href="{{ route('empresa') }}">Sobre nosotros</a>
+                    <a class="nav-link nav__menu__inicio {{ request()->routeIs('servicios') ? 'active__header' : '' }}" href="{{ route('servicios') }}">Servicios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav__menu__inicio {{ request()->routeIs('productos', 'producto') ? 'active__header' : '' }}" href="{{ route('productos') }}">Catálogo</a>
@@ -48,10 +48,10 @@
     <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-                <a class="nav-link nav__menu__inicio {{ request()->routeIs('servicios') ? 'active__header' : '' }}" href="{{ route('servicios') }}">Servicios</a>
+                <a class="nav-link nav__menu__inicio {{ request()->routeIs('empresa') ? 'active__header' : '' }}" href="{{ route('empresa') }}">Sobre nosotros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav__menu__inicio {{ request()->routeIs('empresa') ? 'active__header' : '' }}" href="{{ route('empresa') }}">Sobre nosotros</a>
+                <a class="nav-link nav__menu__inicio {{ request()->routeIs('servicios') ? 'active__header' : '' }}" href="{{ route('servicios') }}">Servicios</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link nav__menu__inicio {{ request()->routeIs('productos') ? 'active__header' : '' }}" href="{{ route('productos') }}">Catálogo</a>

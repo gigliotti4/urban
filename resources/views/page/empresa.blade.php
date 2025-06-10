@@ -39,14 +39,14 @@
     </div>
 </div>
 
-<div class="bg-empresa">
+<div class="bg-empresa" data-aos="fade-up" data-aos-duration="1000">
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
                 <h3 class="empresa-titulo">Sobre Nosotros</h3>
                 <p class="empresa-descripcion mt-3">{!!$empresa->descripcion_izq!!}</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="fade-left" data-aos-delay="400" data-aos-duration="800">
                 <h3 class="empresa-titulo">¿Qué Hacemos?</h3>
                 <p class="empresa-descripcion mt-3">{!!$empresa->descripcion_der!!}</p>
             </div>
@@ -54,10 +54,10 @@
     </div>
 </div>
 
-<div class="container my-5">
+<div class="container my-5" data-aos="fade-up" data-aos-duration="1000">
     <div class="row">
-        <h3 class="text-center empresa-titulo">Galeria</h3>
-        <div class="brands-carousel">
+        <h3 class="text-center empresa-titulo" data-aos="zoom-in" data-aos-delay="200">Galeria</h3>
+        <div class="brands-carousel" data-aos="fade-up" data-aos-delay="400">
             @php
               // Manejo seguro: verificar si es ya un array o es una cadena JSON
               $galeria = $empresa->galeria;
@@ -67,8 +67,8 @@
             @endphp
             
             @if(is_array($galeria) && count($galeria) > 0)
-              @foreach($galeria as $imagen)
-                <div class="brand-item px-2">
+              @foreach($galeria as $index => $imagen)
+                <div class="brand-item px-2" data-aos="fade-up" data-aos-delay="{{ 500 + ($index * 100) }}">
                   <img src="{{ asset(Storage::url($imagen)) }}" alt="" class="img-fluid">
                 </div>
               @endforeach

@@ -1,4 +1,9 @@
-agfregar galeria blog
-agregar linkedin youtube y sacar facebook
-+34656621640 whatsapp
-y agregar icono carrito y redirigir a shoppingfy
+slider varios titulo en minuscula
+
+
+cotnacto alinear izquierda
+
+
+proceso
+alinear linea
+como lelvar tu proyecto a la realidad en 4 pasos

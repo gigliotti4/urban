@@ -26,9 +26,9 @@
             <div class="col-6 col-md-3">
                 <span class="footer__secciones mb-3">Secciones</span>
                 <div class="d-flex flex-column">
-                    <a href="#" class="nav__footer">Servicios</a>
-                    <a href="#" class="nav__footer">Catalogos</a>
-                    <a href="#" class="nav__footer">Sobre Nosotros</a>
+                    <a href="{{route('servicios')}}" class="nav__footer">Servicios</a>
+                    <a href="{{route('productos')}}" class="nav__footer">Catálogos </a>
+                    <a href="{{route('empresa')}}" class="nav__footer">Sobre Nosotros</a>
             
                 </div>
             </div>
@@ -37,9 +37,9 @@
             <div class="col-6 col-md-2 mt-4">
                 <div class="d-flex flex-column">
                   
-                    <a href="#" class="nav__footer">Nuestro Proceso</a>
-                    <a href="#" class="nav__footer">Blog</a>
-                    <a href="#" class="nav__footer">Contacto</a>
+                    <a href="{{route('procesos')}}" class="nav__footer">Nuestro Proceso</a>
+                    <a href="{{route('novedades')}}" class="nav__footer">Blog</a>
+                    <a href="{{route('contacto')}}" class="nav__footer">Contacto</a>
                 </div>
             </div>
 

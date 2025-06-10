@@ -56,9 +56,18 @@ color: white;
     letter-spacing: 0%;
 
 }
+
+/* Ajustes para el modal con Fotorama */
+.modal-body .fotorama {
+    margin: 0 auto;
+}
+
+.modal-xl {
+    max-width: 1200px;
+}
 </style>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-aos="fade-in" data-aos-duration="1200">
     <!-- Indicadores -->
     <div class="carousel-indicators justify-content-center">
         @foreach($sliders as $index => $slider)
@@ -97,12 +106,10 @@ color: white;
     </div>
 </div>
 
-
-
-<div class="container my-5">
+<div class="container my-5" data-aos="fade-up" data-aos-duration="1000">
     <div class="row">
-        <h3>{{$producto->nombre}}</h3>
-        <span>{!!$producto->descripcion!!}</span>
+        <h3 data-aos="fade-up" data-aos-delay="200">{{$producto->nombre}}</h3>
+        <span data-aos="fade-up" data-aos-delay="300">{!!$producto->descripcion!!}</span>
 
         @php
         // Manejo seguro: verificar si es ya un array o es una cadena JSON
@@ -112,39 +119,37 @@ color: white;
         }
       @endphp
 
-      @if(is_array($galeria) && count($galeria) > 0)
-        <div class="row mt-4">
-          @foreach($galeria as $imagen)
-            <div class="col-md-4 col-sm-6 mb-4">
-              <div class="imagen-producto-container">
-                <img src="{{ asset(Storage::url($imagen)) }}" alt="Imagen de producto" class="img-fluid imagen-producto" data-bs-toggle="modal" data-bs-target="#imagenModal" data-imagen="{{ asset(Storage::url($imagen)) }}">
-              </div>
+        @if(is_array($galeria) && count($galeria) > 0)
+            <div class="row mt-4">
+                @foreach($galeria as $index => $imagen)
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="{{ 400 + ($index * 100) }}" data-aos-duration="800">
+                    <div class="imagen-producto-container">
+                        <img src="{{ asset(Storage::url($imagen)) }}" alt="Imagen de producto" class="img-fluid imagen-producto" data-bs-toggle="modal" data-bs-target="#imagenModal" data-imagen="{{ asset(Storage::url($imagen)) }}">
+                    </div>
+                </div>
+                @endforeach
             </div>
-          @endforeach
-        </div>
-      @else
-        {{-- Mostrar imagen principal si no hay galería pero sí imagen principal --}}
-        @if($producto->imagen)
-        <div class="row mt-4 justify-content-center">
-            <div class="col-md-6 col-sm-8 mb-4">
-              <div class="imagen-producto-container">
-                <img src="{{ asset(Storage::url($producto->imagen)) }}" alt="{{ $producto->nombre }}" class="img-fluid imagen-producto" data-bs-toggle="modal" data-bs-target="#imagenModal" data-imagen="{{ asset(Storage::url($producto->imagen)) }}">
-              </div>
-            </div>
-        </div>
         @else
-        {{-- Mostrar mensaje si no hay ni galería ni imagen principal --}}
-        <div class="row mt-4">
-          <div class="col-12">
-            <p class="text-center">No hay imágenes disponibles</p>
-          </div>
-        </div>
+            @if($producto->imagen)
+            <div class="row mt-4 justify-content-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-md-6 col-sm-8 mb-4">
+                    <div class="imagen-producto-container">
+                        <img src="{{ asset(Storage::url($producto->imagen)) }}" alt="{{ $producto->nombre }}" class="img-fluid imagen-producto" data-bs-toggle="modal" data-bs-target="#imagenModal" data-imagen="{{ asset(Storage::url($producto->imagen)) }}">
+                    </div>
+                </div>
+            </div>
+            @else
+            <div class="row mt-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-12">
+                    <p class="text-center">No hay imágenes disponibles</p>
+                </div>
+            </div>
+            @endif
         @endif
-      @endif
     </div>
 </div>
 
-<!-- Modal para mostrar imagen completa -->
+<!-- Modal para mostrar galería con Fotorama -->
 <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -152,40 +157,65 @@ color: white;
         <h5 class="modal-title" id="imagenModalLabel">{{ $producto->nombre }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body text-center">
-        <img src="" id="imagenModalSrc" class="img-fluid" alt="Imagen de producto">
+      <div class="modal-body">
+        <!-- Fotorama -->
+        <div class="fotorama" 
+            
+             data-arrows="true" 
+             data-click="true" 
+             data-swipe="true" 
+             data-width="100%"
+              data-height="500" 
+             data-ratio="16/9"
+             data-fit="cover"
+        
+             data-transition="crossfade">
+          @if(is_array($galeria) && count($galeria) > 0)
+            @foreach($galeria as $imagen)
+              <a href="{{ asset(Storage::url($imagen)) }}" >
+                <img src="{{ asset(Storage::url($imagen)) }}" alt="{{ $producto->nombre }}">
+              </a>
+            @endforeach
+          @elseif($producto->imagen)
+              <a href="{{ asset(Storage::url($producto->imagen)) }}" >
+                <img src="{{ asset(Storage::url($producto->imagen)) }}" alt="{{ $producto->nombre }}">
+              </a>
+          @endif
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<style>
-  .imagen-producto-container {
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 5px;
-    height: 400px;
-  }
-  
-  .imagen-producto {
-    transition: transform .5s ease;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .imagen-producto:hover {
-    transform: scale(1.1);
-  }
-</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const imagenModal = document.getElementById('imagenModal');
+    
     imagenModal.addEventListener('show.bs.modal', function(event) {
       const imagen = event.relatedTarget;
       const src = imagen.getAttribute('data-imagen');
-      document.getElementById('imagenModalSrc').src = src;
+      
+      // Si Fotorama está inicializada, mostrar la imagen correspondiente
+      if (typeof $.fn.fotorama !== 'undefined') {
+        setTimeout(() => {
+          const $fotorama = $('.fotorama').data('fotorama');
+          
+          // Buscar el índice de la imagen clickeada
+          let index = 0;
+          $('.fotorama img').each(function(i) {
+            if($(this).attr('src') === src) {
+              index = i;
+              return false;
+            }
+          });
+          
+          // Mostrar la imagen correspondiente
+          if ($fotorama) {
+            $fotorama.show(index);
+          }
+        }, 300);
+      }
     });
   });
 </script>

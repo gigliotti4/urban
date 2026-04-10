@@ -5,113 +5,11 @@ a{
     transition: 0.5s;
     text-decoration: none;
 }
-.bg-transparent {
-    background-color: transparent !important;
-    font-size: 13px;
-    padding-top: 10px;
-    position: fixed;  
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    width: 100%;
-    transition: background-color 0.3s ease;  /* Añadir transición suave */
-}
-
-/* Clase adicional para cuando se hace scroll */
-.bg-white-scroll {
-    background-color: #131313 !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-  .nav__menu__inicio{
-    color: white ;
-    text-align: center;
-    font-family: 'Raleway';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    
-  }
-  .nav__menu__inicio:hover{
-    color: #858791 !important;
-    text-align: center;
-    font-family: 'Raleway';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    
-  }
-.nav__menu{
-    color: var(--Negro, #000) !important;
-    text-align: center;
-    font-family: 'Raleway';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    
-}
-
-.nav__menu:hover{
-    color: #858791 !important;
-    text-align: center;
-font-family: 'Raleway';
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-
-}
-
-.active__header{
-    color: #858791 !important;
-    text-align: center;
-font-family: 'Raleway';
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-
-}
-
-.active__header:hover{
-    color: #858791 !important;
-    text-align: center;
-font-family: 'Raleway';
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-
-}
 
 
 
 
-.btn__newsletter{
-    font-family: 'Raleway';
 
-    border: 1px solid var(--Azul, #191919);
-    background: #191919;   
-    color: #fff;
-    cursor: poRaleway;
-    padding: 10px 20px;
-    background-color: #191919; /* Color base del botón */
-    transition: 0.5s ease-in-out; /* Transición suave del efecto de sombra */
-}
-
-.btn__newsletter:hover{
-    font-family: 'Raleway';
-
-    border: 1px solid #191919;
-    color: #191919;
-    cursor: poRaleway;
-    background-color: #fff; /* Color base del botón */
-    transition: 0.5s ease-in-out; /* Transición suave del efecto de sombra */
-}
 
 footer{
     background-color: #1A181C;

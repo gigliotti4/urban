@@ -108,11 +108,13 @@ $productos = Producto::orderBy('orden', 'asc')->get();
   
         // Manejo de la carga de la galería de imágenes
         if ($request->hasFile('galeria')) {
-            $galeria = [];
+            // Recuperar la galería existente y decodificarla, o iniciar array vacío
+            $galeria = json_decode($producto->galeria, true) ?? [];
+            
             foreach ($request->file('galeria') as $image) {
                 $imageName = $image->getClientOriginalName();
                 $imagePath = $image->storeAs('galeria', $imageName, 'public');
-                $galeria[] = $imagePath;
+                $galeria[] = $imagePath; // Agregar al array existente
             }
             $data['galeria'] = json_encode($galeria);
         }
